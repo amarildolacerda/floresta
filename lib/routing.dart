@@ -4,8 +4,7 @@ import './views/home/home_view.dart';
 
 import 'config/config.dart';
 import 'logged_view.dart';
-import 'views/home/propriedades_view.dart';
-import 'views/painel/painel_view.dart';
+import 'views/home/config_propriedades_view.dart';
 
 class RoutesApp {
   static final _singleton = RoutesApp._create();
@@ -46,7 +45,6 @@ class RoutesApp {
       '/': (context) => LoggedView(
             child: HomeView(title: Config.resources.appTitle),
           ),
-      PainelView.route: (context) => LoggedView(child: PainelView()),
       PropriedadesView.route: (context) =>
           LoggedView(child: PropriedadesView()),
     });

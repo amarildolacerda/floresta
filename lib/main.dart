@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
           height: double.infinity,
           child: Center(
               child: Opacity(
-            opacity: 0.1,
+            opacity: 0.4,
             child: Image(
                 image: AssetImage('assets/splash.png'),
                 width: double.infinity,

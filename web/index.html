@@ -9,23 +9,64 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="pedido">
+  
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="google-signin-client_id"
+  content="858174338114-o2ci4lvaaiu0qromv0kj6facm6pj36ep.apps.googleusercontent.com">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
   <title>Área de Negócios</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      background-image: url("https://wbagestao.com/w3/resources/storewareconsole.png");
+      background-size: 200px;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  </style>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-messaging.js"></script>
+
+
 </head>
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
   <script>
-    if ('serviceWorker' in navigator) {
+    var firebaseConfig = {
+      "apiKey": "AIzaSyAV0c4MPfug-hSJYU8bT5pADkpaUadCYGU",
+      "authDomain": "selfandpay.firebaseapp.com",
+      "databaseURL": "https://selfandpay.firebaseio.com",
+      "projectId": "selfandpay",
+      "storageBucket": "selfandpay.appspot.com",
+      "messagingSenderId": "858174338114",
+      "appId": "1:858174338114:web:1f7773702de59dc336e9db",
+      "measurementId": "G-G1ZWS0D01G"
+    };
+    firebase.initializeApp(firebaseConfig, '[DEFAULT]');
+    firebase.analytics();
+    const messaging = firebase.messaging();
+  if ('serviceWorker' in navigator) {
       window.addEventListener('flutter-first-frame', function () {
         navigator.serviceWorker.register('flutter_service_worker.js');
       });
+
+
+      navigator.serviceWorker.register('./firebase-messaging-sw.js')
+          .then((registration) => {
+            messaging.useServiceWorker(registration);
+          });
+
     }
   </script>
   <script src="main.dart.js" type="application/javascript"></script>
