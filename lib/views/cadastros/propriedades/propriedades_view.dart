@@ -1,5 +1,6 @@
 // @dart=2.12
 import 'package:app/models/propriedade_model.dart';
+import 'package:app/widgets/data_viewer_pdf.dart';
 import 'package:controls_web/controls/data_viewer.dart';
 import 'package:controls_web/controls/data_viewer_helper.dart';
 //import 'package:controls_web/controls/paginated_grid.dart';
@@ -43,7 +44,11 @@ class _PropriedadesViewState extends State<PropriedadesView> {
               ),
               mask: 'dd/MMMM/yyyy'),
           DataViewerHelper.simnaoColumn(
-              DataViewerColumn(name: 'inativo', visible: true)),
+            DataViewerColumn(
+                name: 'inativo',
+                visible: true,
+                onGetValue: (v) => (v) ? 'Sim' : 'Não'),
+          ),
         ]);
   }
 
@@ -52,6 +57,11 @@ class _PropriedadesViewState extends State<PropriedadesView> {
     return Scaffold(
       //appBar: AppBar(title: Text('')),
       body: DataViewer(
+        actions: [
+          DataViewerPdfReport.createIconButtonLink(context,
+              title: 'Lista de Propriedades',
+              controller: DataViewerPdfReportController(controller))
+        ],
         canInsert: true,
         canEdit: true,
         canDelete: true,
