@@ -6,7 +6,7 @@ import 'config/config.dart';
 
 configurar() {
   Config.resources
-    ..appTitle = 'Storeware Template - App Console'
+    ..appTitle = 'ForestGo'
     ..contaDemo = {"conta": 'm5', "usuario": 'm5', "senha": 'm5'}
     ..primarySwatchColor = Colors.indigo
     ..loginBackgroundWidget = Container(
